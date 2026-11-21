@@ -6,6 +6,7 @@
 <title>FOCAL Repair — Phone, laptop &amp; tablet repair in Denver</title>
 <meta name="description" content="Same-day phone, laptop and tablet repair in Denver. Free diagnosis, price approved before we start, 90-day warranty.">
 <meta name="theme-color" content="#0B0F14">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:title" content="FOCAL Repair — Phone, laptop & tablet repair in Denver">
 <meta property="og:description" content="Free diagnosis, price approved before we start, 90-day warranty. Most repairs the same day.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ElectronicsRepairShop","name":"FOCAL Repair (demo)","telephone":"+1-720-555-0142","address":{"@type":"PostalAddress","streetAddress":"418 Larkin Row, Suite 2","addressLocality":"Denver","addressRegion":"CO","postalCode":"80205","addressCountry":"US"},"openingHours":["Mo-Fr 09:00-19:00","Sa 10:00-18:00","Su 11:00-17:00"]}</script>
@@ -60,10 +61,13 @@ section { padding: 96px 0; scroll-margin-top: 72px; }
 /* Header */
 .top { position: sticky; top: 0; z-index: 30; background: rgba(11, 15, 20, .82); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid rgba(255, 255, 255, .08); color: #fff; }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
-.logo { display: inline-flex; align-items: baseline; gap: 8px; color: #fff; text-decoration: none; font-family: var(--display); font-size: 24px; font-weight: 700; letter-spacing: .04em; }
+.logo { display: inline-flex; align-items: center; gap: 11px; color: #fff; text-decoration: none; }
 .logo:hover { color: #fff; }
-.logo b { color: var(--mint); font-weight: 700; }
-.logo small { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0; color: #aab3bf; }
+.logo .mark { flex: 0 0 auto; transition: transform .3s var(--ease); }
+.logo:hover .mark { transform: rotate(-6deg) scale(1.04); }
+.logo .word { display: flex; flex-direction: column; font-family: var(--display); font-size: 21px; font-weight: 700; letter-spacing: .06em; line-height: 1; }
+.logo .word small { margin-top: 4px; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: #8b95a3; }
+.foot-logo { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-family: var(--display); font-weight: 700; letter-spacing: .06em; }
 .top nav { display: flex; gap: 4px; }
 .top nav a { padding: 8px 12px; border-radius: 8px; color: #c9d0d9; font-size: 15px; font-weight: 500; text-decoration: none; transition: color .2s, background-color .2s; }
 .top nav a:hover { color: #fff; background: rgba(255, 255, 255, .07); }
@@ -191,7 +195,7 @@ details p { margin: 0 0 20px; color: var(--text-2); }
 
 /* Final CTA */
 .final { padding: 0; }
-.final .box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin: 0 auto; padding: 48px 56px; border-radius: 28px; background: radial-gradient(600px 300px at 90% 0%, rgba(74, 222, 128, .35), transparent 60%), var(--green); color: #fff; }
+.final.box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin: 0 auto; padding: 48px 56px; border-radius: 28px; background: radial-gradient(600px 300px at 90% 0%, rgba(74, 222, 128, .35), transparent 60%), var(--green); color: #fff; }
 .final h2 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 34px); }
 .final p { margin: 0; color: #dcfce7; }
 .final .btn.light { border-color: transparent; color: var(--green-600); font-weight: 700; }
@@ -266,7 +270,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .chip.c1 { right: -4px; }
   .chip.c2 { left: -4px; }
   .trust span { font-size: 14px; }
-  .final .box { padding: 32px 24px; border-radius: 22px; }
+  .final.box { padding: 32px 24px; border-radius: 22px; }
   .final .btn { width: 100%; }
   .final-outer { padding-bottom: 64px; }
   .callbar { display: flex; }
@@ -281,6 +285,11 @@ html.js .reveal.in { opacity: 1; transform: none; }
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="brand-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4ade80"/><stop offset="1" stop-color="#15803d"/></linearGradient>
+  </defs>
+  <!-- Logo mark: bold F with a focal point, in a green tile (same as favicon.svg). -->
+  <symbol id="logo-mark" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="url(#brand-g)"/><path d="M16 12h17v6H22.5v5H31v6h-8.5v7H16z" fill="#fff"/><circle cx="35.5" cy="26" r="3.6" fill="#0b0f14"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
   <symbol id="i-mobile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
@@ -295,7 +304,10 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="FOCAL Repair, home"><span>FO<b>CAL</b></span><small>Repair</small></a>
+    <a class="logo" href="#top" aria-label="FOCAL Repair, home">
+      <svg class="mark" width="36" height="36" aria-hidden="true"><use href="#logo-mark"/></svg>
+      <span class="word">FOCAL<small>Repair</small></span>
+    </a>
     <nav aria-label="Main">
       <a href="#services">Services</a>
       <a href="#how">How it works</a>
@@ -549,6 +561,7 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 <footer>
   <div class="wrap">
+    <span class="foot-logo"><svg width="24" height="24" aria-hidden="true"><use href="#logo-mark"/></svg>FOCAL</span>
     <span>© 2026 FOCAL Repair · 418 Larkin Row, Denver, CO</span>
     <span>Demo concept — fictional business. Redesign by OA</span>
   </div>

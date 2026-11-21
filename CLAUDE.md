@@ -12,6 +12,7 @@ Owner: Ouakka Achraf (OA), freelance web/mobile team (Morocco). Conversation lan
 - No invented reviews or ratings; the reviews area links to Google instead.
 - Conversion structure: one primary CTA (Call now), 3-field quote form, price table, trust strip, sticky mobile call bar.
 - Design (2026-11-21 refresh): one `<style>` block with tokens (ink #0B0F14, FOCAL green #15803D, mint #4ADE80), fonts Sora (headings) + Inter (text), no inline styles. Hero = dark gradient + an "Example" repair-ticket illustration (no stock photo; the old castle `hero.jpg` was removed). Open/closed badge computed from the Denver opening hours. The quote form validates a 10-digit US number and shows a confirmation that says it is a demo (nothing is sent). FAQ only repeats promises already on the page. Soft motion, disabled with reduced motion.
+- Logo (chosen by the owner on 2026-11-21, option "Focal point"): a bold white F with a dark focal-point dot in a green gradient tile (#4ADE80 → #15803D), next to "FOCAL" (Sora 700) over "REPAIR" (small, spaced). The mark is the `logo-mark` symbol in `redesign/index.html` and `redesign/favicon.svg`.
 
 ## Deploying
 - Push to `main` → GitHub Pages ("pages build and deployment") republishes. Work on a branch, PR, merge.
