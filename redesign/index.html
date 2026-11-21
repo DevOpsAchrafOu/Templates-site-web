@@ -5,219 +5,610 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FOCAL Repair — Phone, laptop &amp; tablet repair in Denver</title>
 <meta name="description" content="Same-day phone, laptop and tablet repair in Denver. Free diagnosis, price approved before we start, 90-day warranty.">
+<meta name="theme-color" content="#0B0F14">
+<meta property="og:title" content="FOCAL Repair — Phone, laptop & tablet repair in Denver">
+<meta property="og:description" content="Free diagnosis, price approved before we start, 90-day warranty. Most repairs the same day.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ElectronicsRepairShop","name":"FOCAL Repair (demo)","telephone":"+1-720-555-0142","address":{"@type":"PostalAddress","streetAddress":"418 Larkin Row, Suite 2","addressLocality":"Denver","addressRegion":"CO","postalCode":"80205","addressCountry":"US"},"openingHours":["Mo-Fr 09:00-19:00","Sa 10:00-18:00","Su 11:00-17:00"]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Sora:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-body{margin:0;background:#FFFFFF}
-a{color:#15803D}a:hover{color:#166534}
-.fx-hero{background-image:linear-gradient(90deg,rgba(10,14,18,0.92) 0%,rgba(10,14,18,0.75) 55%,rgba(10,14,18,0.45) 100%),url(hero.jpg);background-size:cover;background-position:center}
-.fx-callbar{display:none}
-@media (max-width:640px){.fx-callbar{display:flex}.fx-h1{font-size:34px !important}.fx-navlinks{display:none !important}}
+/* FOCAL Repair — design tokens */
+:root {
+  --ink: #0b0f14;
+  --ink-2: #1a222c;
+  --text: #111827;
+  --text-2: #4b5563;
+  --muted: #8b95a3;
+  --green: #15803d;
+  --green-600: #116b33;
+  --mint: #4ade80;
+  --mint-50: #ecfdf3;
+  --bg: #f6f7f9;
+  --line: #e5e7eb;
+  --r: 14px;
+  --r-lg: 20px;
+  --shadow: 0 1px 2px rgba(11, 15, 20, .05), 0 10px 30px rgba(11, 15, 20, .07);
+  --shadow-lg: 0 2px 6px rgba(11, 15, 20, .08), 0 24px 60px rgba(11, 15, 20, .22);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --display: 'Sora', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; font-size: 16px; line-height: 1.6; color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--display); color: inherit; letter-spacing: -.02em; text-wrap: balance; }
+p { text-wrap: pretty; }
+a { color: var(--green); }
+a:hover { color: var(--green-600); }
+img, svg { display: block; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+section { padding: 96px 0; scroll-margin-top: 72px; }
+:focus-visible { outline: 3px solid var(--mint); outline-offset: 2px; border-radius: 6px; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 50px; padding: 0 24px; border: 1.5px solid transparent; border-radius: 12px; font: inherit; font-size: 16px; font-weight: 600; text-decoration: none; cursor: pointer; white-space: nowrap; transition: background-color .2s var(--ease), border-color .2s var(--ease), color .2s, transform .15s var(--ease), box-shadow .2s; }
+.btn:active { transform: translateY(1px); }
+.btn svg { width: 18px; height: 18px; flex: 0 0 auto; }
+.btn.primary { background: var(--green); color: #fff; box-shadow: 0 8px 22px rgba(21, 128, 61, .3); }
+.btn.primary:hover { background: var(--green-600); color: #fff; }
+.btn.ghost { background: rgba(255, 255, 255, .06); color: #fff; border-color: rgba(255, 255, 255, .22); }
+.btn.ghost:hover { background: rgba(255, 255, 255, .12); color: #fff; border-color: rgba(255, 255, 255, .4); }
+.btn.light { background: #fff; color: var(--text); border-color: var(--line); }
+.btn.light:hover { border-color: var(--text); color: var(--text); }
+.btn.sm { min-height: 42px; padding: 0 16px; font-size: 15px; border-radius: 10px; }
+
+/* Header */
+.top { position: sticky; top: 0; z-index: 30; background: rgba(11, 15, 20, .82); backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid rgba(255, 255, 255, .08); color: #fff; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+.logo { display: inline-flex; align-items: baseline; gap: 8px; color: #fff; text-decoration: none; font-family: var(--display); font-size: 24px; font-weight: 700; letter-spacing: .04em; }
+.logo:hover { color: #fff; }
+.logo b { color: var(--mint); font-weight: 700; }
+.logo small { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0; color: #aab3bf; }
+.top nav { display: flex; gap: 4px; }
+.top nav a { padding: 8px 12px; border-radius: 8px; color: #c9d0d9; font-size: 15px; font-weight: 500; text-decoration: none; transition: color .2s, background-color .2s; }
+.top nav a:hover { color: #fff; background: rgba(255, 255, 255, .07); }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding: 0; color: #fff; background: radial-gradient(900px 480px at 78% 20%, rgba(74, 222, 128, .16), transparent 60%), radial-gradient(700px 400px at 0% 100%, rgba(21, 128, 61, .18), transparent 60%), var(--ink); }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at 60% 40%, #000 30%, transparent 75%); pointer-events: none; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: center; padding-top: 80px; padding-bottom: 96px; }
+.status { display: inline-flex; align-items: center; gap: 9px; padding: 6px 14px 6px 10px; border: 1px solid rgba(255, 255, 255, .16); border-radius: 999px; background: rgba(255, 255, 255, .05); color: #dfe5ec; font-size: 14px; font-weight: 500; }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(74, 222, 128, .2); }
+.status.closed i { background: #f59e0b; box-shadow: 0 0 0 4px rgba(245, 158, 11, .2); }
+.hero h1 { margin: 22px 0 18px; font-size: clamp(36px, 4.8vw, 58px); line-height: 1.08; font-weight: 700; }
+.hero h1 em { font-style: normal; color: var(--mint); }
+.hero .lead { margin: 0 0 32px; max-width: 54ch; font-size: 18px; line-height: 1.65; color: #b9c2cd; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.ticks { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 28px 0 0; padding: 0; list-style: none; color: #c9d0d9; font-size: 15px; }
+.ticks li { display: inline-flex; align-items: center; gap: 8px; }
+.ticks svg { width: 18px; height: 18px; color: var(--mint); }
+
+/* Hero visual: example repair ticket */
+.ticket-wrap { position: relative; }
+.ticket { position: relative; z-index: 2; padding: 26px; border: 1px solid rgba(255, 255, 255, .1); border-radius: var(--r-lg); background: linear-gradient(180deg, #151c25, #10161d); box-shadow: var(--shadow-lg); }
+.ticket-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+.ticket-head .dev { display: flex; align-items: center; gap: 12px; }
+.ticket-head .dev span { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(74, 222, 128, .12); color: var(--mint); }
+.ticket-head b { display: block; font-family: var(--display); font-size: 17px; font-weight: 600; }
+.ticket-head small { color: var(--muted); font-size: 13px; }
+.tag { padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, .07); color: #aab3bf; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.steps-mini { margin: 0; padding: 0; list-style: none; }
+.steps-mini li { position: relative; display: flex; align-items: center; gap: 14px; padding: 12px 0; color: #dfe5ec; font-size: 15px; }
+.steps-mini li + li { border-top: 1px dashed rgba(255, 255, 255, .08); }
+.steps-mini .dot { display: grid; place-items: center; flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: var(--green); color: #fff; }
+.steps-mini .dot svg { width: 14px; height: 14px; }
+.steps-mini time { margin-left: auto; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.ready { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; padding: 14px 16px; border-radius: 12px; background: rgba(74, 222, 128, .1); color: var(--mint); font-weight: 600; }
+.ready span { color: #dfe5ec; font-weight: 500; font-size: 14px; }
+.chip { position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: #fff; color: var(--text); box-shadow: var(--shadow-lg); font-size: 14px; font-weight: 600; white-space: nowrap; }
+.chip svg { width: 18px; height: 18px; color: var(--green); }
+.chip.c1 { top: -18px; right: -14px; }
+.chip.c2 { bottom: -20px; left: -18px; }
+.glow { position: absolute; inset: 10% -6% -8% 10%; z-index: 1; border-radius: 40px; background: radial-gradient(closest-side, rgba(74, 222, 128, .28), transparent); filter: blur(10px); }
+
+/* Device strip */
+.devices { padding: 22px 0; background: var(--ink-2); color: #aab3bf; }
+.devices .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 34px; font-size: 14px; }
+.devices b { color: #fff; font-weight: 600; }
+.devices span { display: inline-flex; align-items: center; gap: 8px; }
+.devices span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--mint); opacity: .7; }
+
+/* Section heads */
+.head { max-width: 640px; margin-bottom: 40px; }
+.eyebrow { display: inline-block; margin-bottom: 10px; color: var(--green); font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+h2 { margin: 0 0 12px; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.15; font-weight: 700; }
+.sub { margin: 0; font-size: 17px; color: var(--text-2); }
+
+/* Trust strip */
+.trust { padding: 0; background: var(--bg); border-bottom: 1px solid var(--line); }
+.trust .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; padding-top: 22px; padding-bottom: 22px; }
+.trust span { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; }
+.trust svg { flex: 0 0 auto; width: 34px; height: 34px; padding: 8px; border-radius: 10px; background: var(--mint-50); color: var(--green); }
+
+/* Services */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.card { display: flex; flex-direction: column; gap: 12px; padding: 28px; border: 1px solid var(--line); border-radius: var(--r-lg); background: #fff; transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
+.card:hover { transform: translateY(-4px); border-color: transparent; box-shadow: var(--shadow); }
+.card .ico { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 14px; background: var(--mint-50); color: var(--green); }
+.card .ico svg { width: 24px; height: 24px; }
+.card h3 { margin: 6px 0 0; font-size: 20px; font-weight: 600; }
+.card p { margin: 0; color: var(--text-2); font-size: 15px; }
+.card .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.card .meta span { padding: 5px 10px; border-radius: 8px; background: var(--bg); font-size: 13px; font-weight: 600; }
+.card .more { margin-top: auto; padding-top: 8px; display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; text-decoration: none; }
+.card .more::after { content: "→"; transition: transform .2s var(--ease); }
+.card .more:hover::after { transform: translateX(4px); }
+
+/* How it works */
+.how { background: var(--ink); color: #fff; }
+.how .sub { color: #aab3bf; }
+.how .eyebrow { color: var(--mint); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: step; }
+.step { position: relative; padding: 28px; border: 1px solid rgba(255, 255, 255, .09); border-radius: var(--r-lg); background: rgba(255, 255, 255, .03); }
+.step::before { counter-increment: step; content: "0" counter(step); display: block; margin-bottom: 18px; font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--mint); letter-spacing: .08em; }
+.step h3 { margin: 0 0 8px; font-size: 19px; font-weight: 600; }
+.step p { margin: 0; color: #aab3bf; font-size: 15px; }
+
+/* Prices */
+.prices-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
+.prices-head .head { margin: 0; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-lg); }
+table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 16px; }
+th { padding: 16px 22px; background: var(--bg); text-align: left; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-2); }
+td { padding: 16px 22px; border-top: 1px solid var(--line); }
+td:first-child { font-weight: 500; }
+td.price { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+td.time { color: var(--text-2); white-space: nowrap; }
+tbody tr { transition: background-color .2s; }
+tbody tr:hover { background: #fafbfc; }
+.note { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
+
+/* FAQ */
+.faq { background: var(--bg); }
+.faq .wrap { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+details { margin-bottom: 12px; padding: 0 22px; border: 1px solid var(--line); border-radius: var(--r); background: #fff; transition: box-shadow .2s, border-color .2s; }
+details[open] { border-color: #c9ecd5; box-shadow: var(--shadow); }
+summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 62px; font-weight: 600; cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; flex: 0 0 auto; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--bg); font-size: 18px; font-weight: 500; color: var(--text-2); transition: transform .25s var(--ease); }
+details[open] summary::after { transform: rotate(45deg); }
+details p { margin: 0 0 20px; color: var(--text-2); }
+
+/* Visit */
+.visit .wrap { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 40px; align-items: stretch; }
+.addr { margin: 0 0 6px; font-size: 18px; font-weight: 500; }
+.hint { margin: 0 0 22px; color: var(--text-2); font-size: 15px; }
+.hours { display: grid; grid-template-columns: auto auto; gap: 8px 32px; justify-content: start; margin: 0 0 28px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--r); font-size: 15px; }
+.hours dt { color: var(--text-2); }
+.hours dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.hours .today { color: var(--green); }
+.map { position: relative; min-height: 320px; overflow: hidden; border-radius: var(--r-lg); background: #e9eef1; }
+.map svg.streets { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pin { position: absolute; left: 50%; top: 48%; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.pin span { padding: 8px 14px; border-radius: 10px; background: #fff; box-shadow: var(--shadow); font-size: 14px; font-weight: 600; white-space: nowrap; }
+.pin svg { width: 44px; height: 44px; filter: drop-shadow(0 6px 10px rgba(21, 128, 61, .35)); animation: drop .8s var(--ease) both; }
+@keyframes drop { from { transform: translateY(-24px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* Final CTA */
+.final { padding: 0; }
+.final .box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin: 0 auto; padding: 48px 56px; border-radius: 28px; background: radial-gradient(600px 300px at 90% 0%, rgba(74, 222, 128, .35), transparent 60%), var(--green); color: #fff; }
+.final h2 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 34px); }
+.final p { margin: 0; color: #dcfce7; }
+.final .btn.light { border-color: transparent; color: var(--green-600); font-weight: 700; }
+.final-outer { padding: 0 0 96px; }
+
+/* Footer, mobile bar */
+footer { background: var(--ink); color: #9aa4b2; font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 28px; padding-bottom: 28px; }
+.callbar { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; gap: 10px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--line); }
+.callbar .btn { flex: 1; min-height: 48px; }
+.callbar .dark { background: var(--ink); color: #fff; }
+
+/* Quote form */
+.quote-sec { background: #fff; }
+.quote-sec .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 56px; align-items: center; }
+.quote-points { margin: 24px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.quote-points li { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+.quote-points svg { flex: 0 0 auto; width: 30px; height: 30px; padding: 7px; border-radius: 9px; background: var(--mint-50); color: var(--green); }
+form.quote { display: flex; flex-direction: column; gap: 16px; padding: 30px; border: 1px solid var(--line); border-radius: var(--r-lg); background: #fff; box-shadow: var(--shadow); }
+form.quote h3 { margin: 0; font-size: 22px; font-weight: 600; }
+form.quote .small { margin: -8px 0 0; color: var(--text-2); font-size: 14px; }
+form.quote label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; }
+form.quote select, form.quote input { min-height: 48px; padding: 0 14px; border: 1px solid #d1d5db; border-radius: 10px; background: #fff; font: inherit; font-size: 16px; font-weight: 400; color: var(--text); transition: border-color .2s, box-shadow .2s; }
+form.quote select:focus, form.quote input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px var(--mint-50); }
+form.quote [aria-invalid=true] { border-color: #dc2626; }
+form.quote .err { color: #b91c1c; font-size: 13px; font-weight: 600; }
+form.quote .btn { width: 100%; }
+form.quote .fine { margin: 0; text-align: center; color: var(--text-2); font-size: 13px; }
+.done { display: none; flex-direction: column; align-items: center; gap: 10px; padding: 12px 0; text-align: center; }
+.done svg { width: 54px; height: 54px; padding: 13px; border-radius: 50%; background: var(--mint-50); color: var(--green); }
+.done b { font-family: var(--display); font-size: 20px; }
+.done p { margin: 0; color: var(--text-2); font-size: 15px; }
+form.quote.sent > :not(.done) { display: none; }
+form.quote.sent .done { display: flex; }
+
+/* Motion */
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes float-in { from { opacity: 0; transform: translateY(30px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes bob { 50% { transform: translateY(-6px); } }
+@keyframes tick { from { transform: scale(0); } to { transform: scale(1); } }
+.hero .txt > * { animation: rise .7s var(--ease) both; }
+.hero .txt > :nth-child(2) { animation-delay: .07s; }
+.hero .txt > :nth-child(3) { animation-delay: .14s; }
+.hero .txt > :nth-child(4) { animation-delay: .21s; }
+.hero .txt > :nth-child(5) { animation-delay: .28s; }
+.ticket { animation: float-in .9s var(--ease) .15s both; }
+.steps-mini .dot { animation: tick .4s var(--ease) both; }
+.steps-mini li:nth-child(1) .dot { animation-delay: .7s; }
+.steps-mini li:nth-child(2) .dot { animation-delay: 1s; }
+.steps-mini li:nth-child(3) .dot { animation-delay: 1.3s; }
+.chip { animation: rise .7s var(--ease) .9s both, bob 5s ease-in-out 1.8s infinite; }
+.chip.c2 { animation-delay: 1.05s, 2.6s; }
+html.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+html.js .reveal.in { opacity: 1; transform: none; }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero .wrap, .quote-sec .wrap, .faq .wrap, .visit .wrap { grid-template-columns: 1fr; }
+  .ticket-wrap { max-width: 460px; width: 100%; margin: 0 auto; }
+  .cards, .steps { grid-template-columns: 1fr; }
+  .trust .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .faq .wrap { gap: 24px; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+  section { padding: 64px 0; }
+  .top nav, .top .hide-sm { display: none; }
+  .hero .wrap { padding-top: 48px; padding-bottom: 72px; gap: 40px; }
+  .hero .lead { font-size: 16px; }
+  .ctas .btn { flex: 1 1 100%; }
+  .chip { font-size: 13px; padding: 8px 12px; }
+  .chip.c1 { right: -4px; }
+  .chip.c2 { left: -4px; }
+  .trust span { font-size: 14px; }
+  .final .box { padding: 32px 24px; border-radius: 22px; }
+  .final .btn { width: 100%; }
+  .final-outer { padding-bottom: 64px; }
+  .callbar { display: flex; }
+  footer .wrap { padding-bottom: 96px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  html.js .reveal { opacity: 1; transform: none; }
+}
 </style>
-<style>*{box-sizing:border-box}html{scroll-behavior:smooth}</style>
 </head>
 <body>
-<div style="font-family: 'Poppins', system-ui, sans-serif; color: #111827; background: #FFFFFF; line-height: 1.6">
 
-<!-- top bar -->
-<header style="background: #0A0E12; color: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
-<a href="#top" style="text-decoration: none; color: #FFFFFF; font-size: 26px; font-weight: 500; letter-spacing: 1px">FO<span style="color: #4ADE80">CAL</span> <span style="font-size: 14px; font-weight: 400; color: #D1D5DB; letter-spacing: 0">Repair</span></a>
-<nav class="fx-navlinks" aria-label="Main" style="display: flex; gap: 26px; font-size: 15px">
-<a href="#services" style="color: #E5E7EB; text-decoration: none">Services</a>
-<a href="#how" style="color: #E5E7EB; text-decoration: none">How it works</a>
-<a href="#reviews" style="color: #E5E7EB; text-decoration: none">Reviews</a>
-<a href="#visit" style="color: #E5E7EB; text-decoration: none">Visit us</a>
-</nav>
-<a href="tel:+17205550142" style="background: #15803D; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; padding: 10px 18px; border-radius: 8px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px">
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>
-Call (720) 555-0142</a>
-</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mobile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"/></symbol>
+  <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="FOCAL Repair, home"><span>FO<b>CAL</b></span><small>Repair</small></a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#prices">Prices</a>
+      <a href="#faq">FAQ</a>
+      <a href="#visit">Visit us</a>
+    </nav>
+    <a class="btn primary sm" href="tel:+17205550142" aria-label="Call (720) 555-0142"><svg><use href="#i-phone"/></svg><span class="hide-sm">Call (720) 555-0142</span></a>
+  </div>
 </header>
 
-<!-- hero -->
-<section id="top" class="fx-hero" style="color: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 80px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
-<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-<span style="align-self: flex-start; font-size: 14px; font-weight: 500; color: #BBF7D0; border: 1px solid rgba(187,247,208,0.5); padding: 5px 14px; border-radius: 999px">Open today · 9 AM – 7 PM</span>
-<h1 class="fx-h1" style="margin: 0; font-size: 50px; line-height: 1.15; font-weight: 600">Phone, laptop &amp; tablet repair in Denver — most fixes the same day.</h1>
-<p style="margin: 0; font-size: 19px; color: #E5E7EB; max-width: 580px; font-weight: 300">Free diagnosis. 90-day warranty on parts and labor. Walk in, or send us the problem and get a price before you come.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
-<a href="tel:+17205550142" style="background: #15803D; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; padding: 14px 26px; border-radius: 10px; min-height: 50px; box-sizing: border-box; display: inline-flex; align-items: center">Call now</a>
-<a href="#quote" style="background: #FFFFFF; color: #0A0E12; text-decoration: none; font-weight: 600; font-size: 17px; padding: 14px 26px; border-radius: 10px; min-height: 50px; box-sizing: border-box; display: inline-flex; align-items: center">Text us on WhatsApp</a>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 10px 24px; font-size: 15px; color: #E5E7EB">
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Free diagnosis</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Most repairs same day</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>90-day warranty</span>
-</div>
-</div>
+<main>
+<!-- Hero -->
+<section id="top" class="hero">
+  <div class="wrap">
+    <div class="txt">
+      <span class="status" id="status"><i></i><span>Open 7 days a week</span></span>
+      <h1>Phone, laptop &amp; tablet repair in Denver. <em>Most fixes the same day.</em></h1>
+      <p class="lead">Free diagnosis and a 90-day warranty on parts and labor. Walk in, or send us the problem and get a price before you come.</p>
+      <div class="ctas">
+        <a class="btn primary" href="tel:+17205550142"><svg><use href="#i-phone"/></svg>Call now</a>
+        <a class="btn ghost" href="#quote">Get a free quote</a>
+      </div>
+      <ul class="ticks">
+        <li><svg><use href="#i-check"/></svg>Free diagnosis</li>
+        <li><svg><use href="#i-check"/></svg>Most repairs same day</li>
+        <li><svg><use href="#i-check"/></svg>90-day warranty</li>
+      </ul>
+    </div>
 
-<form id="quote" style="flex: 1 1 340px; background: #FFFFFF; color: #111827; border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 50px rgba(0,0,0,0.35)">
-<div>
-<div style="font-size: 21px; font-weight: 600">Get a free quote</div>
-<div style="font-size: 14px; color: #4B5563">3 quick questions. We reply within 15 minutes while open.</div>
-</div>
-<label style="display: flex; flex-direction: column; gap: 5px; font-size: 14px; font-weight: 500">Device
-<select name="device" style="font: inherit; font-weight: 400; padding: 11px 12px; border: 1px solid #D1D5DB; border-radius: 8px; min-height: 44px; background: #FFFFFF">
-<option>iPhone</option><option>Android phone</option><option>Laptop</option><option>Tablet</option><option>Other gadget</option>
-</select>
-</label>
-<label style="display: flex; flex-direction: column; gap: 5px; font-size: 14px; font-weight: 500">What's wrong?
-<select name="issue" style="font: inherit; font-weight: 400; padding: 11px 12px; border: 1px solid #D1D5DB; border-radius: 8px; min-height: 44px; background: #FFFFFF">
-<option>Cracked screen</option><option>Battery drains fast</option><option>Water damage</option><option>Won't turn on / won't charge</option><option>Something else</option>
-</select>
-</label>
-<label style="display: flex; flex-direction: column; gap: 5px; font-size: 14px; font-weight: 500">Your phone number
-<input type="tel" name="phone" placeholder="(555) 123-4567" style="font: inherit; font-weight: 400; padding: 11px 12px; border: 1px solid #D1D5DB; border-radius: 8px; min-height: 44px; box-sizing: border-box">
-</label>
-<button type="submit" style="font: inherit; background: #15803D; color: #FFFFFF; border: 0; border-radius: 10px; padding: 13px; font-weight: 600; font-size: 16px; min-height: 48px; cursor: pointer">Get my price</button>
-<div style="font-size: 13px; color: #4B5563; text-align: center">No account, no password. Or call <a href="tel:+17205550142">(720) 555-0142</a>.</div>
-</form>
-</div>
+    <div class="ticket-wrap" aria-label="Example of a repair, step by step">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="ticket">
+        <div class="ticket-head">
+          <div class="dev"><span><svg width="22" height="22"><use href="#i-mobile"/></svg></span><div><b>iPhone · cracked screen</b><small>Repair ticket</small></div></div>
+          <span class="tag">Example</span>
+        </div>
+        <ol class="steps-mini">
+          <li><span class="dot"><svg><use href="#i-check"/></svg></span>Free diagnosis<time>10:05</time></li>
+          <li><span class="dot"><svg><use href="#i-check"/></svg></span>Price approved by you<time>10:12</time></li>
+          <li><span class="dot"><svg><use href="#i-check"/></svg></span>Screen replaced &amp; tested<time>11:00</time></li>
+        </ol>
+        <div class="ready">Ready for pickup<span>Same day</span></div>
+      </div>
+      <span class="chip c1" aria-hidden="true"><svg><use href="#i-shield"/></svg>90-day warranty</span>
+      <span class="chip c2" aria-hidden="true"><svg><use href="#i-tag"/></svg>Price before we start</span>
+    </div>
+  </div>
 </section>
 
-<!-- trust strip -->
-<section style="background: #F3F4F6; border-bottom: 1px solid #E5E7EB">
-<div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px 28px; font-size: 15px; color: #111827; font-weight: 500">
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Free diagnosis, no obligation</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Price approved before we start</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>90-day warranty</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Open 7 days a week</span>
+<!-- Devices -->
+<div class="devices" aria-label="Devices we repair">
+  <div class="wrap">
+    <b>We repair</b><span>iPhone</span><span>Samsung &amp; Android</span><span>iPad &amp; tablets</span><span>Laptops</span><span>Consoles</span><span>Smartwatches</span>
+  </div>
 </div>
+
+<!-- Trust strip -->
+<section class="trust" aria-label="Our promises">
+  <div class="wrap">
+    <span><svg><use href="#i-search"/></svg>Free diagnosis, no obligation</span>
+    <span><svg><use href="#i-tag"/></svg>Price approved before we start</span>
+    <span><svg><use href="#i-shield"/></svg>90-day warranty</span>
+    <span><svg><use href="#i-calendar"/></svg>Open 7 days a week</span>
+  </div>
 </section>
 
-<!-- services -->
-<section id="services" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 32px">
-<div style="display: flex; flex-direction: column; gap: 8px; max-width: 640px">
-<h2 style="margin: 0; font-size: 36px; font-weight: 600">What we fix</h2>
-<p style="margin: 0; font-size: 17px; color: #4B5563">Clear prices up front. If the diagnosis finds something different, we call you before doing anything.</p>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px">
-<div style="flex: 1 1 300px; border: 1px solid #E5E7EB; border-radius: 14px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
-<div style="width: 48px; height: 48px; border-radius: 12px; background: #DCFCE7; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"></rect><path d="M11 18h2"></path></svg></div>
-<h3 style="margin: 0; font-size: 20px; font-weight: 600">Screens &amp; batteries</h3>
-<p style="margin: 0; font-size: 15px; color: #4B5563">Cracked glass, dead pixels, swollen or weak batteries. Most done while you wait.</p>
-<div style="font-size: 15px; font-weight: 600">From $59 · about 1 hour</div>
-<a href="#quote" style="margin-top: auto; font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">Get a quote →</a>
-</div>
-<div style="flex: 1 1 300px; border: 1px solid #E5E7EB; border-radius: 14px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
-<div style="width: 48px; height: 48px; border-radius: 12px; background: #DCFCE7; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11z"></path></svg></div>
-<h3 style="margin: 0; font-size: 20px; font-weight: 600">Water damage &amp; board repair</h3>
-<p style="margin: 0; font-size: 15px; color: #4B5563">Dropped it in water? Turn it off and bring it in fast — the sooner, the better the odds.</p>
-<div style="font-size: 15px; font-weight: 600">Free diagnosis · 24–48 hours</div>
-<a href="#quote" style="margin-top: auto; font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">Get a quote →</a>
-</div>
-<div style="flex: 1 1 300px; border: 1px solid #E5E7EB; border-radius: 14px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
-<div style="width: 48px; height: 48px; border-radius: 12px; background: #DCFCE7; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M2 20h20"></path></svg></div>
-<h3 style="margin: 0; font-size: 20px; font-weight: 600">Laptops, tablets &amp; gadgets</h3>
-<p style="margin: 0; font-size: 15px; color: #4B5563">Keyboards, charging ports, slow machines, consoles and smartwatches.</p>
-<div style="font-size: 15px; font-weight: 600">From $69 · same day to 3 days</div>
-<a href="#quote" style="margin-top: auto; font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">Get a quote →</a>
-</div>
-</div>
+<!-- Services -->
+<section id="services">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Services</span>
+      <h2>What we fix</h2>
+      <p class="sub">Clear prices up front. If the diagnosis finds something different, we call you before doing anything.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <span class="ico"><svg><use href="#i-mobile"/></svg></span>
+        <h3>Screens &amp; batteries</h3>
+        <p>Cracked glass, dead pixels, swollen or weak batteries. Most done while you wait.</p>
+        <div class="meta"><span>From $59</span><span>About 1 hour</span></div>
+        <a class="more" href="#quote">Get a quote</a>
+      </article>
+      <article class="card reveal">
+        <span class="ico"><svg><use href="#i-drop"/></svg></span>
+        <h3>Water damage &amp; board repair</h3>
+        <p>Dropped it in water? Turn it off and bring it in fast: the sooner, the better the odds.</p>
+        <div class="meta"><span>Free diagnosis</span><span>24–48 hours</span></div>
+        <a class="more" href="#quote">Get a quote</a>
+      </article>
+      <article class="card reveal">
+        <span class="ico"><svg><use href="#i-laptop"/></svg></span>
+        <h3>Laptops, tablets &amp; gadgets</h3>
+        <p>Keyboards, charging ports, slow machines, consoles and smartwatches.</p>
+        <div class="meta"><span>From $69</span><span>Same day to 3 days</span></div>
+        <a class="more" href="#quote">Get a quote</a>
+      </article>
+    </div>
+  </div>
 </section>
 
-<!-- how it works -->
-<section id="how" style="background: #0A0E12; color: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 30px">
-<h2 style="margin: 0; font-size: 36px; font-weight: 600">How it works</h2>
-<div style="display: flex; flex-wrap: wrap; gap: 24px">
-<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 8px">
-<div style="font-size: 40px; font-weight: 600; color: #4ADE80; line-height: 1">1</div>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600">Tell us the problem</h3>
-<p style="margin: 0; font-size: 15px; color: #D1D5DB">Call, WhatsApp a photo, or use the quote form.</p>
-</div>
-<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 8px">
-<div style="font-size: 40px; font-weight: 600; color: #4ADE80; line-height: 1">2</div>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600">Free diagnosis, fixed price</h3>
-<p style="margin: 0; font-size: 15px; color: #D1D5DB">You approve the price before we start. No surprises.</p>
-</div>
-<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 8px">
-<div style="font-size: 40px; font-weight: 600; color: #4ADE80; line-height: 1">3</div>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600">Fixed, tested, guaranteed</h3>
-<p style="margin: 0; font-size: 15px; color: #D1D5DB">Pick it up — usually the same day — with a 90-day warranty.</p>
-</div>
-</div>
-</div>
+<!-- How it works -->
+<section id="how" class="how">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps, no surprises</h2>
+      <p class="sub">You always know the price before we touch your device.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>Tell us the problem</h3><p>Call us, or use the quote form below.</p></div>
+      <div class="step reveal"><h3>Free diagnosis, fixed price</h3><p>You approve the price before we start. No surprises.</p></div>
+      <div class="step reveal"><h3>Fixed, tested, guaranteed</h3><p>Pick it up, usually the same day, with a 90-day warranty.</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- prices -->
-<section id="reviews" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 28px">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
-<div style="display: flex; flex-direction: column; gap: 8px; max-width: 640px">
-<h2 style="margin: 0; font-size: 36px; font-weight: 600">Popular repairs &amp; prices</h2>
-<p style="margin: 0; font-size: 17px; color: #4B5563">Starting prices including parts and labor. Final price confirmed after the free diagnosis.</p>
-</div>
-<a href="https://www.google.com/maps" target="_blank" rel="noopener" style="font-weight: 600; font-size: 15px; min-height: 44px; display: inline-flex; align-items: center">Read our reviews on Google →</a>
-</div>
-<div style="border: 1px solid #E5E7EB; border-radius: 14px; overflow-x: auto">
-<table style="width: 100%; min-width: 560px; border-collapse: collapse; font-size: 16px">
-<thead><tr style="background: #F3F4F6; text-align: left"><th scope="col" style="padding: 14px 18px; font-weight: 600">Repair</th><th scope="col" style="padding: 14px 18px; font-weight: 600">Price</th><th scope="col" style="padding: 14px 18px; font-weight: 600">Usual time</th></tr></thead>
-<tbody>
-<tr style="border-top: 1px solid #E5E7EB"><td style="padding: 14px 18px; font-weight: 500">iPhone screen replacement</td><td style="padding: 14px 18px; font-weight: 600; white-space: nowrap">from $89</td><td style="padding: 14px 18px; color: #4B5563; white-space: nowrap">45–60 min</td></tr>
-<tr style="border-top: 1px solid #E5E7EB"><td style="padding: 14px 18px; font-weight: 500">Samsung / Android screen</td><td style="padding: 14px 18px; font-weight: 600; white-space: nowrap">from $99</td><td style="padding: 14px 18px; color: #4B5563; white-space: nowrap">1–2 hours</td></tr>
-<tr style="border-top: 1px solid #E5E7EB"><td style="padding: 14px 18px; font-weight: 500">Battery replacement (phone)</td><td style="padding: 14px 18px; font-weight: 600; white-space: nowrap">from $59</td><td style="padding: 14px 18px; color: #4B5563; white-space: nowrap">30–45 min</td></tr>
-<tr style="border-top: 1px solid #E5E7EB"><td style="padding: 14px 18px; font-weight: 500">Charging port repair</td><td style="padding: 14px 18px; font-weight: 600; white-space: nowrap">from $65</td><td style="padding: 14px 18px; color: #4B5563; white-space: nowrap">about 1 hour</td></tr>
-<tr style="border-top: 1px solid #E5E7EB"><td style="padding: 14px 18px; font-weight: 500">Water damage cleaning</td><td style="padding: 14px 18px; font-weight: 600; white-space: nowrap">free diagnosis</td><td style="padding: 14px 18px; color: #4B5563; white-space: nowrap">24–48 hours</td></tr>
-<tr style="border-top: 1px solid #E5E7EB"><td style="padding: 14px 18px; font-weight: 500">Laptop screen or keyboard</td><td style="padding: 14px 18px; font-weight: 600; white-space: nowrap">from $119</td><td style="padding: 14px 18px; color: #4B5563; white-space: nowrap">1–3 days</td></tr>
-<tr style="border-top: 1px solid #E5E7EB"><td style="padding: 14px 18px; font-weight: 500">Tablet / iPad glass</td><td style="padding: 14px 18px; font-weight: 600; white-space: nowrap">from $99</td><td style="padding: 14px 18px; color: #4B5563; white-space: nowrap">same day</td></tr>
-<tr style="border-top: 1px solid #E5E7EB"><td style="padding: 14px 18px; font-weight: 500">Data recovery</td><td style="padding: 14px 18px; font-weight: 600; white-space: nowrap">from $149</td><td style="padding: 14px 18px; color: #4B5563; white-space: nowrap">2–5 days</td></tr>
-</tbody>
-</table>
-</div>
+<!-- Prices -->
+<section id="prices">
+  <div class="wrap">
+    <div class="prices-head reveal">
+      <div class="head">
+        <span class="eyebrow">Prices</span>
+        <h2>Popular repairs &amp; prices</h2>
+        <p class="sub">Starting prices including parts and labor. Final price confirmed after the free diagnosis.</p>
+      </div>
+      <a class="btn light sm" href="https://www.google.com/maps" target="_blank" rel="noopener">Read our reviews on Google →</a>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th scope="col">Repair</th><th scope="col">Price</th><th scope="col">Usual time</th></tr></thead>
+        <tbody>
+          <tr><td>iPhone screen replacement</td><td class="price">from $89</td><td class="time">45–60 min</td></tr>
+          <tr><td>Samsung / Android screen</td><td class="price">from $99</td><td class="time">1–2 hours</td></tr>
+          <tr><td>Battery replacement (phone)</td><td class="price">from $59</td><td class="time">30–45 min</td></tr>
+          <tr><td>Charging port repair</td><td class="price">from $65</td><td class="time">about 1 hour</td></tr>
+          <tr><td>Water damage cleaning</td><td class="price">free diagnosis</td><td class="time">24–48 hours</td></tr>
+          <tr><td>Laptop screen or keyboard</td><td class="price">from $119</td><td class="time">1–3 days</td></tr>
+          <tr><td>Tablet / iPad glass</td><td class="price">from $99</td><td class="time">same day</td></tr>
+          <tr><td>Data recovery</td><td class="price">from $149</td><td class="time">2–5 days</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Parts and labor included. 90-day warranty on every repair.</p>
+  </div>
 </section>
 
-<!-- visit -->
-<section id="visit" style="background: #F3F4F6; border-top: 1px solid #E5E7EB">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 32px; align-items: stretch">
-<div style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 14px">
-<h2 style="margin: 0; font-size: 36px; font-weight: 600">Visit the shop</h2>
-<div style="font-size: 17px">418 Larkin Row, Suite 2<br>Denver, CO 80205</div><div style="font-size: 15px; color: #374151">Free street parking · 5 min walk from Union Station</div>
-<div style="font-size: 15px; color: #374151; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; max-width: 320px">
-<span>Mon – Fri</span><span>9 AM – 7 PM</span>
-<span>Saturday</span><span>10 AM – 6 PM</span>
-<span>Sunday</span><span>11 AM – 5 PM</span>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px">
-<a href="tel:+17205550142" style="background: #15803D; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 12px 22px; border-radius: 10px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Call (720) 555-0142</a>
-<a href="https://maps.google.com" target="_blank" rel="noopener" style="background: #FFFFFF; color: #111827; text-decoration: none; font-weight: 600; font-size: 16px; padding: 12px 22px; border-radius: 10px; border: 1px solid #D1D5DB; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Get directions</a>
-</div>
-</div>
-<div role="img" aria-label="Map showing the shop location in Denver" style="flex: 1 1 420px; min-height: 280px; border-radius: 14px; background-color: #E8ECEF; background-image: linear-gradient(#D5DCE1 2px, transparent 2px), linear-gradient(90deg, #D5DCE1 2px, transparent 2px); background-size: 56px 56px; display: flex; align-items: center; justify-content: center; position: relative">
-<div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
-<svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="#15803D" stroke="#FFFFFF" stroke-width="1.5"><path d="M12 22s-7-6.2-7-11.5A7 7 0 0 1 19 10.5C19 15.8 12 22 12 22z"></path><circle cx="12" cy="10.5" r="2.5" fill="#FFFFFF"></circle></svg>
-<div style="background: #FFFFFF; border-radius: 10px; padding: 8px 14px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 14px rgba(0,0,0,0.12)">FOCAL Repair · Larkin Row</div>
-</div>
-</div>
-</div>
+<!-- Quote form -->
+<section id="quote" class="quote-sec">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Free quote</span>
+      <h2>Know the price before you come</h2>
+      <p class="sub">Three quick questions. We reply within 15 minutes while open.</p>
+      <ul class="quote-points">
+        <li><svg><use href="#i-clock"/></svg>Reply within 15 minutes while open</li>
+        <li><svg><use href="#i-tag"/></svg>No obligation, no account</li>
+        <li><svg><use href="#i-shield"/></svg>90-day warranty on parts and labor</li>
+      </ul>
+    </div>
+    <form class="quote reveal" id="quote-form" novalidate>
+      <h3>Get a free quote</h3>
+      <p class="small">No account, no password.</p>
+      <label>Device
+        <select name="device"><option>iPhone</option><option>Android phone</option><option>Laptop</option><option>Tablet</option><option>Other gadget</option></select>
+      </label>
+      <label>What's wrong?
+        <select name="issue"><option>Cracked screen</option><option>Battery drains fast</option><option>Water damage</option><option>Won't turn on / won't charge</option><option>Something else</option></select>
+      </label>
+      <label>Your phone number
+        <input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="(555) 123-4567" aria-describedby="phone-err">
+        <span class="err" id="phone-err" hidden>Please enter a 10-digit US phone number.</span>
+      </label>
+      <button type="submit" class="btn primary">Get my price</button>
+      <p class="fine">Or call <a href="tel:+17205550142">(720) 555-0142</a>.</p>
+      <div class="done" role="status">
+        <svg><use href="#i-check"/></svg>
+        <b>Thanks, we got it!</b>
+        <p id="done-msg">We'll text you a price within 15 minutes while open.</p>
+        <p><small>Demo site: nothing was actually sent.</small></p>
+      </div>
+    </form>
+  </div>
 </section>
 
-<!-- final CTA -->
-<section style="background: #15803D; color: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px">
-<div>
-<h2 style="margin: 0; font-size: 32px; font-weight: 600">Broken device? Get it back today.</h2>
-<p style="margin: 0; font-size: 17px; color: #ECFDF5">Free diagnosis · price before we start · 90-day warranty</p>
-</div>
-<a href="tel:+17205550142" style="background: #FFFFFF; color: #14532D; text-decoration: none; font-weight: 700; font-size: 17px; padding: 14px 28px; border-radius: 10px; min-height: 50px; box-sizing: border-box; display: inline-flex; align-items: center">Call (720) 555-0142</a>
-</div>
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions before you come</h2>
+      <p class="sub">Anything else? Call us at <a href="tel:+17205550142">(720) 555-0142</a>.</p>
+    </div>
+    <div class="reveal">
+      <details><summary>Do I need an appointment?</summary><p>No. Walk in during opening hours, or send us the problem first with the quote form to get a price before you come.</p></details>
+      <details><summary>How much does the diagnosis cost?</summary><p>Nothing. The diagnosis is free and there is no obligation to go ahead with the repair.</p></details>
+      <details><summary>Will the price change after the diagnosis?</summary><p>Only with your approval. If we find something different, we call you before doing anything.</p></details>
+      <details><summary>How long does a repair take?</summary><p>Most screen and battery repairs are done the same day, often while you wait. Water damage and laptops can take 1 to 3 days: see the price table.</p></details>
+      <details><summary>Is the repair guaranteed?</summary><p>Yes, every repair comes with a 90-day warranty on parts and labor.</p></details>
+    </div>
+  </div>
 </section>
 
-<footer style="background: #0A0E12; color: #D1D5DB">
-<div style="max-width: 1200px; margin: 0 auto; padding: 26px 24px 90px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px">
-<span>© 2026 FOCAL Repair · 418 Larkin Row, Denver, CO</span>
-<span>Demo concept — fictional business. Redesign by OA</span>
+<!-- Visit -->
+<section id="visit" class="visit">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Visit us</span>
+      <h2>Visit the shop</h2>
+      <p class="addr">418 Larkin Row, Suite 2<br>Denver, CO 80205</p>
+      <p class="hint">Free street parking · 5 min walk from Union Station</p>
+      <dl class="hours" id="hours">
+        <dt data-days="1-5">Mon – Fri</dt><dd>9 AM – 7 PM</dd>
+        <dt data-days="6">Saturday</dt><dd>10 AM – 6 PM</dd>
+        <dt data-days="0">Sunday</dt><dd>11 AM – 5 PM</dd>
+      </dl>
+      <div class="ctas">
+        <a class="btn primary" href="tel:+17205550142"><svg><use href="#i-phone"/></svg>Call (720) 555-0142</a>
+        <a class="btn light" href="https://maps.google.com" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+    <div class="map reveal" role="img" aria-label="Map showing the shop location in Denver">
+      <svg class="streets" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="600" height="400" fill="#e9eef1"/>
+        <g fill="#dfe6ea"><rect x="20" y="20" width="150" height="110" rx="8"/><rect x="200" y="20" width="170" height="110" rx="8"/><rect x="400" y="20" width="180" height="110" rx="8"/><rect x="20" y="160" width="150" height="90" rx="8"/><rect x="400" y="160" width="180" height="90" rx="8"/><rect x="20" y="280" width="150" height="100" rx="8"/><rect x="200" y="280" width="170" height="100" rx="8"/><rect x="400" y="280" width="180" height="100" rx="8"/></g>
+        <rect x="200" y="160" width="170" height="90" rx="8" fill="#d6f5e1"/>
+        <g stroke="#fff" stroke-width="14" stroke-linecap="round"><path d="M0 145H600M0 265H600M185 0V400M385 0V400"/></g>
+        <path d="M-20 360 C 120 300, 260 330, 620 210" stroke="#cfe3f5" stroke-width="18" fill="none"/>
+      </svg>
+      <div class="pin">
+        <svg viewBox="0 0 24 24" fill="#15803d" stroke="#fff" stroke-width="1.5" aria-hidden="true"><path d="M12 22s-7-6.2-7-11.5A7 7 0 0 1 19 10.5C19 15.8 12 22 12 22z"/><circle cx="12" cy="10.5" r="2.5" fill="#fff"/></svg>
+        <span>FOCAL Repair · Larkin Row</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<div class="final-outer">
+  <div class="wrap">
+    <div class="final box reveal">
+      <div>
+        <h2>Broken device? Get it back today.</h2>
+        <p>Free diagnosis · price before we start · 90-day warranty</p>
+      </div>
+      <a class="btn light" href="tel:+17205550142"><svg><use href="#i-phone"/></svg>Call (720) 555-0142</a>
+    </div>
+  </div>
 </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 FOCAL Repair · 418 Larkin Row, Denver, CO</span>
+    <span>Demo concept — fictional business. Redesign by OA</span>
+  </div>
 </footer>
 
-<!-- sticky mobile call bar (phone width only) -->
-<div class="fx-callbar" style="position: sticky; bottom: 0; background: #FFFFFF; border-top: 1px solid #E5E7EB; padding: 10px 12px; gap: 10px; box-shadow: 0 -6px 20px rgba(0,0,0,0.08)">
-<a href="tel:+17205550142" style="flex: 1 1 0; background: #15803D; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; border-radius: 10px; min-height: 48px; display: flex; align-items: center; justify-content: center">Call now</a>
-<a href="#quote" style="flex: 1 1 0; background: #0A0E12; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; border-radius: 10px; min-height: 48px; display: flex; align-items: center; justify-content: center">Free quote</a>
+<!-- Sticky call bar (phone width only) -->
+<div class="callbar">
+  <a class="btn primary" href="tel:+17205550142"><svg><use href="#i-phone"/></svg>Call now</a>
+  <a class="btn dark" href="#quote">Free quote</a>
 </div>
 
-</div>
+<script>
+(function () {
+  // Opening hours in Denver: 0 = Sunday … 6 = Saturday, [open, close] in hours.
+  var HOURS = { 0: [11, 17], 1: [9, 19], 2: [9, 19], 3: [9, 19], 4: [9, 19], 5: [9, 19], 6: [10, 18] };
+  var fmt = function (h) { return (h % 12 || 12) + (h < 12 ? ' AM' : ' PM'); };
+
+  // "Open now · until 7 PM" or "Closed · opens 9 AM", from the time in Denver.
+  try {
+    var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Denver', weekday: 'short', hour: 'numeric', hour12: false }).formatToParts(new Date());
+    var get = function (t) { return parts.filter(function (p) { return p.type === t; })[0].value; };
+    var day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(get('weekday'));
+    var hour = parseInt(get('hour'), 10) % 24;
+    var today = HOURS[day], status = document.getElementById('status'), label = status.querySelector('span');
+    if (hour >= today[0] && hour < today[1]) {
+      label.textContent = 'Open now · until ' + fmt(today[1]);
+    } else {
+      var next = hour < today[0] ? today[0] : HOURS[(day + 1) % 7][0];
+      label.textContent = 'Closed · opens ' + (hour < today[0] ? 'today' : 'tomorrow') + ' at ' + fmt(next);
+      status.classList.add('closed');
+    }
+    // Highlight today's line in the opening hours.
+    document.querySelectorAll('#hours dt').forEach(function (dt) {
+      var r = dt.getAttribute('data-days').split('-').map(Number);
+      if (day >= r[0] && day <= (r[1] === undefined ? r[0] : r[1])) { dt.classList.add('today'); dt.nextElementSibling.classList.add('today'); }
+    });
+  } catch (e) { /* keep "Open 7 days a week" */ }
+
+  // Quote form: check the phone number, then show the confirmation (demo: nothing is sent).
+  var form = document.getElementById('quote-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var input = form.phone, err = document.getElementById('phone-err');
+    var digits = input.value.replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '');
+    var ok = digits.length === 10;
+    input.setAttribute('aria-invalid', String(!ok));
+    err.hidden = ok;
+    if (!ok) { input.focus(); return; }
+    document.getElementById('done-msg').textContent = 'We’ll text ' + '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6) + ' a price for your ' + form.device.value.toLowerCase() + ' within 15 minutes while open.';
+    form.classList.add('sent');
+  });
+
+  // Fade sections in when they scroll into view.
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
 </body>
 </html>
